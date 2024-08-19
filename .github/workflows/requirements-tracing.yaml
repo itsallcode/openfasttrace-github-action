@@ -1,0 +1,34 @@
+name: Requirements tracing
+
+on:
+  pull_request:
+
+jobs:
+  tracing:
+    name: Run OpenFastTrace
+    runs-on: ubuntu-latest
+    outputs:
+      tracing-report-url: ${{ steps.upload-report.outputs.artifact-url }}
+    env:
+      REPORT_FILENAME: "requirements-tracing-report.html"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run OpenFastTrace
+        id: run-oft
+        uses: ./
+        with:
+          report-filename: ${{ env.REPORT_FILENAME }}
+          report-format: "html"
+          file-patterns: "."
+
+      - name: Upload tracing report
+        id: upload-report
+        uses: actions/upload-artifact@v4
+        with:
+          name: tracing-report
+          path: ${{ env.REPORT_FILENAME }}
+
+      - name: "Determine exit code"
+        run: |
+          exit ${{ steps.run-oft.outputs.oft-exit-code }}

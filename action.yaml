@@ -1,0 +1,35 @@
+# Perform requirements tracing against the uProtocol Specification using OpenFastTrace (https://github.com/itsallcode/openfasttrace)
+# Returns the URL of the created HTML report as an output
+
+# [impl->req~run-oft-trace-command~1]
+name: "Run OpenFastTrace"
+description: |
+  Runs OpenFastTrace with the `trace` command on files in the local workspace.
+inputs:
+  file-patterns:
+    description: |
+      A whitespace separated list of (Bash standard) glob patterns which specify the files and directories to include in the OFT trace run.
+      If not specified, the local workspace directory is used.
+    default: "."
+    required: false
+  report-filename:
+    description: |
+      The name of the file that OpenFastTrace should write the analysis results to.
+    required: true
+  report-format:
+    description: The format of the report that OpenFastTrace should produce.
+    default: "plain"
+    required: false
+outputs:
+  oft-exit-code:
+    description: |
+      The exit code indicating the outcome of running OpenFastTrace (0: success, 1: failure).
+      The report is created in any case, as long as OpenFastTrace could be run at all.
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.report-filename }}
+    - ${{ inputs.report-format }}
+    - ${{ inputs.file-patterns }}
