@@ -29,4 +29,7 @@ Needs: req
 
 The OFT Action runs the OpenFastTrace `trace` command.
 
+Covers:
+- feat~standard-github-action~1
+
 Needs: impl
