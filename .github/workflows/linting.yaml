@@ -1,0 +1,17 @@
+name: Linting
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  linting:
+    name: Lint artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - shell: bash
+        run: |
+          shellcheck "${GITHUB_WORKSPACE}"/*.sh

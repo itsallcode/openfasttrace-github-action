@@ -2,6 +2,9 @@ name: Requirements tracing
 
 on:
   pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
   tracing:
