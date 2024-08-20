@@ -1,4 +1,4 @@
-# Perform requirements tracing against the uProtocol Specification using OpenFastTrace (https://github.com/itsallcode/openfasttrace)
+# Perform requirements tracing against specification documents and source code using OpenFastTrace (https://github.com/itsallcode/openfasttrace)
 # Returns the URL of the created HTML report as an output
 
 # [impl->req~run-oft-trace-command~1]

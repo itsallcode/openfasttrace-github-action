@@ -17,6 +17,6 @@ then
   echo "oft-exit-code=0" >> "${GITHUB_OUTPUT}"
   echo "All specification items are covered." >> "${GITHUB_STEP_SUMMARY}"
 else
-  echo "oft-exit-code=1" >> "${GITHUB_OUTPUT}"
-  echo "Some specification items are not covered. See attached report for details." >> "${GITHUB_STEP_SUMMARY}"
+  echo "oft-exit-code=$?" >> "${GITHUB_OUTPUT}"
+  echo "Some specification items are not covered. See created report (${report_file_name}) for details." >> "${GITHUB_STEP_SUMMARY}"
 fi
