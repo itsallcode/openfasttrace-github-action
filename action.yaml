@@ -20,16 +20,23 @@ inputs:
     description: The format of the report that OpenFastTrace should produce.
     default: "plain"
     required: false
+  fail-on-error:
+    description: |
+      By default, the action will never fail but indicate the result of running the trace command in the "oft-exit-code" output variable.
+      Setting this parameter to "true" will let the Action return the exit code produced by running OpenFastTrace.
+    default: "false"
+    required: false
 outputs:
   oft-exit-code:
     description: |
-      The exit code indicating the outcome of running OpenFastTrace (0: success, 1: failure).
+      The exit code indicating the outcome of running OpenFastTrace (0: success, > 0: failure).
       The report is created in any case, as long as OpenFastTrace could be run at all.
 
 runs:
   using: "docker"
   image: "Dockerfile"
   args:
+    - ${{ inputs.fail-on-error }}
     - ${{ inputs.report-filename }}
     - ${{ inputs.report-format }}
     - ${{ inputs.file-patterns }}
