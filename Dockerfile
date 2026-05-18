@@ -1,10 +1,10 @@
 # [impl->req~run-oft-trace-command~1]
-FROM eclipse-temurin:22-jre-alpine
+FROM eclipse-temurin:25-jre-alpine
 # alpine comes with sh only, by default
 RUN apk add --no-cache bash
 
-ARG OFT_CORE_VERSION=4.2.0
-ARG OFT_ASCIIDOC_PLUGIN_VERSION=0.3.0
+ARG OFT_CORE_VERSION=4.3.0
+ARG OFT_ASCIIDOC_PLUGIN_VERSION=0.3.1
 
 ENV LIB_DIR=/opt/oft/lib
 
