@@ -2,7 +2,7 @@
 
 A GitHub Action for tracing requirements using OpenFastTrace.
 
-Runs OpenFastTrace CLI's `trace` command using Temurin JRE 22 on the local workspace.
+Runs OpenFastTrace CLI's `trace` command using Temurin JRE 25 on the local workspace.
 
 The action has the following inputs:
 
