@@ -37,7 +37,7 @@ jobs:
     outputs:
       tracing-report-url: ${{ steps.upload-tracing-report.artifact-url }}
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
 
     - name: Run OpenFastTrace
       id: run-oft
@@ -49,7 +49,7 @@ jobs:
         tags: Priority1,OtherComponent
 
     - name: Upload tracing report (html)
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       id: upload-tracing-report
       if: ${{ steps.run-oft.outputs.oft-exit-code != '' }}
       with:
